@@ -13,6 +13,7 @@ plotData
 names(plotData)
 class(allData[,3])
 plotData[,3] <- as.numeric(plotData[,3])
+png(filename="plot1.png")
 hist(plotData$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
-dev.copy(png, "plot1.png")
 dev.off()
+

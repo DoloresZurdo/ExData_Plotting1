@@ -10,15 +10,21 @@ sum(myData)
 plotData <- allData[myData,]
 plotData
 
-#Plot 3
 Sub_metering_1 <- plotData[,7]
 Sub_metering_2 <- plotData[,8]
 Sub_metering_3 <- plotData[,9]
 
+dates <- plotData[,1]
+times <- plotData[,2]
+x <- paste(dates, times)
+head(x)
+t <- strptime(x, "%d/%m/%Y %H:%M:%S")
+
+#Plot 3
+png(filename="plot3.png")
 plot(t, Sub_metering_1, type="n", xlab="", bg="transparent", ylab ="Energy Sub metering")
 lines(t, Sub_metering_1, col = "black")
 lines(t, Sub_metering_2, col = "red")
 lines(t, Sub_metering_3, col = "blue")
 legend("topright", lwd = 1, col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-dev.copy(png, "plot3.png")
 dev.off()

@@ -10,18 +10,22 @@ sum(myData)
 plotData <- allData[myData,]
 plotData
 
-# Plot 4
 names(plotData)
 Voltage <- plotData[,5]
-plot(t, Voltage, type="n", xlab="datetime", bg="transparent", ylab ="Voltage")
-lines(t, Voltage, col = "black")
+GlobalActivePower <- plotData[,3]
+Sub_metering_1 <- plotData[,7]
+Sub_metering_2 <- plotData[,8]
+Sub_metering_3 <- plotData[,9]
 
-Global_reactive_power <- plotData[,4]
-plot(t, Global_reactive_power, type="n", xlab="datetime", bg="transparent", ylab ="Global_reactive_power")
-lines(t, Global_reactive_power, col = "black")
+dates <- plotData[,1]
+times <- plotData[,2]
+x <- paste(dates, times)
+head(x)
+t <- strptime(x, "%d/%m/%Y %H:%M:%S")
 
+# Plot 4
+png(filename="plot4.png")
 par (mfrow = c(2, 2), mar = c(4, 4, 2, 1) )
-
 plot(t, GlobalActivePower, type="n", xlab="datetime", bg="transparent", ylab ="Global Active Power")
 lines(t, GlobalActivePower, col = "black")
 plot(t, Voltage, type="n", xlab="datetime", bg="transparent", ylab ="Voltage")
@@ -33,6 +37,4 @@ lines(t, Sub_metering_3, col = "blue")
 legend("topright", lwd = 1, cex=0.6, col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 plot(t, Global_reactive_power, type="n", xlab="datetime", bg="transparent", ylab ="Global_reactive_power")
 lines(t, Global_reactive_power, col = "black")
-
-dev.copy(png, "plot4.png")
 dev.off()
