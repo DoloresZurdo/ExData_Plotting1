@@ -27,7 +27,7 @@ t <- strptime(x, "%d/%m/%Y %H:%M:%S")
 # Plot 4
 png(filename="plot4.png")
 par (mfrow = c(2, 2), mar = c(4, 4, 2, 1) )
-plot(t, GlobalActivePower, type="n", xlab="datetime", bg="transparent", ylab ="Global Active Power")
+plot(t, GlobalActivePower, type="n", xlab="", bg="transparent", ylab ="Global Active Power")
 lines(t, GlobalActivePower, col = "black")
 plot(t, Voltage, type="n", xlab="datetime", bg="transparent", ylab ="Voltage")
 lines(t, Voltage, col = "black")
