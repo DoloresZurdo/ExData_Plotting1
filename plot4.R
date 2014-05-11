@@ -13,6 +13,7 @@ plotData
 names(plotData)
 Voltage <- plotData[,5]
 GlobalActivePower <- plotData[,3]
+Global_reactive_power <- plotData[,4]
 Sub_metering_1 <- plotData[,7]
 Sub_metering_2 <- plotData[,8]
 Sub_metering_3 <- plotData[,9]
